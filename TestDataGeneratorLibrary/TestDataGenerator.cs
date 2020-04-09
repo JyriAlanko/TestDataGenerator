@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using static TestDataGeneratorLibrary.Person;
 
@@ -43,7 +44,7 @@ namespace TestDataGeneratorLibrary
             Random rnd = new Random();
             int sex = rnd.Next(0, 2);
 
-
+            
             return sex;
         }
             
@@ -56,11 +57,10 @@ namespace TestDataGeneratorLibrary
             string LastName = Convert.ToString(getRandomlastName(Person.lastNames));
             int Age = getRandomAge();
             int sex = getRandomSex();
-            
-            Sex gender = (Sex)sex;
 
-            Console.WriteLine($"{FirstName} {LastName} Age:{Age} Gender:{gender}");
-            person.Add(new Person { FirstName = FirstName, LastName = LastName, Age = Age });
+            
+            Console.WriteLine($"{FirstName} {LastName} Age:{Age} Gender:{Enum.GetName(typeof(Sex), sex)}");
+            person.Add(new Person { FirstName = FirstName, LastName = LastName, Age = Age  });
             return null;
         }
 

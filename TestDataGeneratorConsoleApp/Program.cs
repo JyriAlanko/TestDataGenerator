@@ -14,8 +14,8 @@ namespace TestDataGeneratorConsoleApp
 
             //dataGenerator.getRandomStringFromArray(Person.firstNameMales);
             //dataGenerator.getRandomlastName(Person.lastNames);
+            //dataGenerator.getRandomAge();
 
-            dataGenerator.getRandomAge();
             dataGenerator.generateRandomPerson();
             
 
