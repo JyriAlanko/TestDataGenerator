@@ -15,16 +15,18 @@ namespace TestDataGeneratorConsoleApp
             //dataGenerator.getRandomStringFromArray(Person.firstNameMales);
             //dataGenerator.getRandomlastName(Person.lastNames);
             //dataGenerator.getRandomAge();
+            Start:
+            var newPerson = dataGenerator.generateRandomPerson();
+            person.Add(newPerson);
 
-            dataGenerator.generateRandomPerson();
-            
-
-            //for (int i = 0; i < person.Count; i++)
-            //{
-            //    Console.WriteLine($"Name: {person[i].FirstName} {person[i].LastName} Age: {person[i].Age} Gender: ");
-            //}
+            for (int i = 0; i < person.Count; i++)
+            {
+                Console.WriteLine($"Name: {person[i].FirstName} {person[i].LastName} Age: {person[i].Age} Gender: {person[i].sex}");
+            }
 
             Console.ReadKey();
+            Console.Clear();
+            goto Start;
         }
     }
 }

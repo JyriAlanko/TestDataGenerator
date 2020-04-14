@@ -9,11 +9,11 @@ namespace TestDataGeneratorLibrary
     public class TestDataGenerator
     {
         enum Sex { Male = 0, Female = 1}
-        List<Person> person = new List<Person>();
+        public List<Person> person = new List<Person>();
         public string FirstName;
         public string LastName;
 
-        public string getRandomStringFromArray(string[] firstNameMales)
+        public static string getRandomStringFromArray(string[] firstNameMales)
         {
             Random rnd = new Random();
             int firstNameIndex = rnd.Next(firstNameMales.Length);
@@ -23,14 +23,14 @@ namespace TestDataGeneratorLibrary
 
         }
 
-        public string getRandomlastName(string[] lastNames)
+        public static string getRandomlastName(string[] lastNames)
         {
             Random rnd = new Random();
             int lastNameIndex = rnd.Next(lastNames.Length);
             return lastNames[lastNameIndex];
         }
 
-        public int getRandomAge()
+        public static int getRandomAge()
         {
             Random rnd = new Random();
             int age = rnd.Next(20, 50);
@@ -39,28 +39,43 @@ namespace TestDataGeneratorLibrary
 
         }
 
-        public int getRandomSex()
+        public static int getRandomSex()
         {
             Random rnd = new Random();
-            int sex = rnd.Next(0, 2);
-
+            var sex = rnd.Next(0, 2);
             
             return sex;
         }
             
 
-        public string generateRandomPerson()
+        public Person generateRandomPerson()
         {
+            int gender = getRandomSex();
             
+            if(gender == 0)
+            {
+            string FirstName = getRandomStringFromArray(Person.firstNameMales);
+            string LastName = (getRandomlastName(Person.lastNames));
+            var Age = getRandomAge();
 
-            string FirstName = Convert.ToString(getRandomStringFromArray(Person.firstNameMales));
-            string LastName = Convert.ToString(getRandomlastName(Person.lastNames));
-            int Age = getRandomAge();
-            int sex = getRandomSex();
+                Person toReturn = new Person(FirstName, LastName, Age, (Person.Sex)gender);
+                return toReturn;
+            }
 
-            
-            Console.WriteLine($"{FirstName} {LastName} Age:{Age} Gender:{Enum.GetName(typeof(Sex), sex)}");
-            person.Add(new Person { FirstName = FirstName, LastName = LastName, Age = Age  });
+            if(gender == 1)
+            {
+                string FirstName = getRandomStringFromArray(Person.firstNameFemales);
+                string LastName = getRandomlastName(Person.lastNames);
+                var Age = getRandomAge();
+                Person toReturn = new Person(FirstName, LastName, Age, (Person.Sex)gender);
+                return toReturn;
+            }
+
+
+            //Console.WriteLine($"{FirstName} {LastName} Age:{Age} Gender:{Enum.GetName(typeof(Sex), sex)}");
+            //person.Add(new Person { FirstName = FirstName, LastName = LastName, Age = Age  });
+            //return new Person(FirstName, LastName, Age);
+
             return null;
         }
 

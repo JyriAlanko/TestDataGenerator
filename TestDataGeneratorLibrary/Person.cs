@@ -13,9 +13,10 @@ namespace TestDataGeneratorLibrary
         public int Age { get; set; }
 
 
+        public Sex sex;
 
-
-        public static string[] firstNameMales = { "Jesse", "Jamppa" };
+        public static string[] firstNameMales = { "Jesse", "Jamppa","Pekka" };
+        public static string[] firstNameFemales = { "Marja", "Tiina", "Pirjo" };
         public static string[] lastNames = { "Peränen", "Taukola", "Sukunimi" };
 
         public Person()
@@ -23,11 +24,12 @@ namespace TestDataGeneratorLibrary
 
         }
 
-        public Person(string FirstName, string LastName, int Age)
+        public Person(string FirstName, string LastName, int Age, Sex sex)
         {
             this.FirstName = FirstName;
             this.LastName = LastName;
             this.Age = Age;
+            this.sex = sex;
         }
     }
 }
